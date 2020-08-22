@@ -8,7 +8,7 @@ class Database {
     mongoose.connection.on('disconnected', this.mongo);
   }
 
-  mongo() {
+  mongo(): void {
     mongoose
       .connect(mongoConfig.mongoUrl, {
         useNewUrlParser: true,
