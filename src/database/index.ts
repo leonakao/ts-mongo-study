@@ -15,9 +15,11 @@ class Database {
         useFindAndModify: true,
       })
       .then(() => {
+        // eslint-disable-next-line no-console
         return console.log(`Successfully connected to ${mongoConfig.mongoUrl}`);
       })
       .catch(error => {
+        // eslint-disable-next-line no-console
         console.log('Error connecting to database: ', error);
         return process.exit(1);
       });
