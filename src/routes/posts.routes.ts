@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import Post, { PostDocument } from '../models/Post';
-import Category from '../models/Category';
+import Post, { PostDocument } from '@models/Post';
+import Category from '@models/Category';
 
 const postsRoutes = Router();
 

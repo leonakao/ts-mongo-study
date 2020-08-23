@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import mongoConfig from '../config/mongo';
+import mongoConfig from '@config/mongo';
 
 class Database {
   constructor() {
