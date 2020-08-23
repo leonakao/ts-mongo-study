@@ -4,11 +4,35 @@ import Category from '../models/Category';
 const categoriesRoutes = Router();
 
 categoriesRoutes.get('/', async (request, response) => {
-  return response.json({ development: true });
+  const categories = await Category.find();
+
+  return response.status(200).json(categories);
 });
 
-categoriesRoutes.put('/', async (request, response) => {
-  return response.json({ development: true });
+categoriesRoutes.get('/:categoryId', async (request, response) => {
+  const { categoryId } = request.params;
+
+  const category = await Category.findById(categoryId);
+
+  if (!category) {
+    throw new Error('Category not found.');
+  }
+
+  return response.status(200).json(category);
+});
+
+categoriesRoutes.put('/:categoryId', async (request, response) => {
+  const { categoryId } = request.params;
+
+  const category = await Category.findById(categoryId);
+
+  if (!category) {
+    throw new Error('Category not found.');
+  }
+
+  await category.updateOne(request.body);
+
+  return response.status(200).send();
 });
 
 categoriesRoutes.post('/', async (request, response) => {
@@ -19,11 +43,21 @@ categoriesRoutes.post('/', async (request, response) => {
     description,
   });
 
-  return response.json(category);
+  return response.status(201).json(category);
 });
 
-categoriesRoutes.delete('/', async (request, response) => {
-  return response.json({ development: true });
+categoriesRoutes.delete('/:categoryId', async (request, response) => {
+  const { categoryId } = request.params;
+
+  const category = await Category.findById(categoryId);
+
+  if (!category) {
+    throw new Error('Category not found');
+  }
+
+  await category.remove();
+
+  return response.status(204).send();
 });
 
 export default categoriesRoutes;

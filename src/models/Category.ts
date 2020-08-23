@@ -1,4 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
+
+interface CategoryDocument extends Document {
+  name: string;
+  description: string;
+}
 
 const CategorySchema = new Schema(
   {
@@ -16,4 +21,4 @@ const CategorySchema = new Schema(
   },
 );
 
-export default model('Category', CategorySchema);
+export default model<CategoryDocument>('Category', CategorySchema);
