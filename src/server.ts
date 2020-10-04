@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 import bodyParser from 'body-parser';
+
 import routes from './routes';
 
 import './database';
